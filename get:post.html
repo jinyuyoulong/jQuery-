@@ -1,0 +1,38 @@
+<!-- jQuery get() 和 post() 方法用于通过 HTTP GET 或 POST 请求从服务器请求数据。 -->
+<!DOCTYPE html>
+<html>
+<!-- <script src="../jquery.js"></script> -->
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.js"></script>
+<meta charset="utf-8">
+<script>
+	$(document).ready(function () {
+		$("button").click(function () {
+			$.get("/PHP/api.php",function (name,sex) {
+				alert("name: " + name + "\nSex: " +sex);
+			});
+		});
+	});
+	
+
+	// $(document).ready(function () {
+	// 	$("button").click(function(){
+	// 		$("#test").animate({left:'450px'});
+	// 		$("div").animate({left:'250px'});
+	// 	});
+	// });
+</script>
+<head>
+	<title>get/post</title>
+
+</head>
+<body>
+<br/>
+姓名：<input type="text" id="name" width="300" />
+<button id="submit" onclick="submit()">提交</button><br/>
+
+性别：<input type="text" id="sex" width="300" />
+<button id="test" onclick="sex_submit()" style="position: absolute;">提交</button><br>
+
+<div  style="background: red; width: 300px; height: 300px; position:absolute;"></div>
+</body>
+</html>
