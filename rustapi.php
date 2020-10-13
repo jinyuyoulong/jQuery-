@@ -1,3 +1,4 @@
 <?php
 $arr = ['a','b'];
-echo(json_encode($arr));
+// return json_encode($arr);
+echo json_encode($arr);

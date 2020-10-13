@@ -5,31 +5,34 @@
     <!-- <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.js"></script> -->
 <meta charset="utf-8">
 <script>
-	$(document).ready(function () {
-		$("button").click(function () {
-			$.get("/PHP/api.php",function (name,sex) {
-				alert("name: " + name + "\nSex: " +sex);
-			});
-		});
-	});
+	//方式一：
+	// $(document).ready(function () {
+	// 	$("button").click(function () {
+	// 		$.get("rustapi.php",function (data,status) {
+	// 			alert("data: " + data + "\nstatus: " +status);
+	// 		});
+	// 	});
+	// });
 	
 
+	function msubmit() {
+		$ajax({
+			type: 'post',
+			// type: 'get',
+			url:'rustapi.php',
+			data: $('form').serialize(),
+			dataType: 'josn',
+		}).success(function (data, status) {
+				alert(data+ status)
+			})
+	}
+		//ajax callback action
 	// $(document).ready(function () {
 	// 	$("button").click(function(){
 	// 		$("#test").animate({left:'450px'});
 	// 		$("div").animate({left:'250px'});
 	// 	});
 	// });
-	function submit() {
-		// $ajax({
-		// 	type: 'post',
-		// 	url:'rustapi.php',
-		// 	data: $('form').serialize(),
-		// 	success: function (data) {
-				alert(data)
-		// 	}
-		// })
-	}
 </script>
 <head>
 	<title>get-post</title>
@@ -37,15 +40,11 @@
 </head>
 <body>
 <br/>
-<form>
-	姓名：<input type="text" id="name" width="300" />
-	<button id="submit" onclick="submit()">提交</button><br/>
-
-	性别：<input type="text" id="sex" width="300" />
-	<button id="test" onclick="sex_submit()" style="position: absolute;">提交</button><br>
+<form method="post">
+	姓名：<input type="text" id="name" width="300" name="name" />
+	性别：<input type="text" id="sex" width="300" name="sex" />
+	<input type="submit" value ="提交" onclick="msubmit()">
 </form>
-
-
-<div  style="background: red; width: 300px; height: 300px; position:absolute;"></div>
+<div  style="background: gray; width: 300px; height: 300px; position:absolute;"></div>
 </body>
 </html>

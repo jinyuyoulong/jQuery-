@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test http options method</title>
+	<link rel="stylesheet" type="text/css" href="jquery.js">
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	$ajax({
+			type: 'post',
+			url:'options.php',
+			data: $('form').serialize(),
+			dataType: 'josn',
+			success: function (data, status) {
+				alert(data+ status)
+			}
+		})
+</script>
+</html>
